@@ -1,0 +1,115 @@
+<script>
+// 1. Initialize
+document.write('1. Initialize<br>')
+
+// I am trying to initialize a map. I will see its correctness later in the code. 
+let namesToNumbers = new Map([
+    ['James', 1],
+    ['Mary', 2],
+    ['John', 3],
+    ['Jennifer', 4],
+    ['Daniel', 5]
+]);
+
+// 2. Get the value for a given key
+document.write('<br>2. Get the value for a given key<br>')
+
+// I am trying to print the value of 'John' key with the get function. If it prints 3, then I successfully got the value with the get function.
+document.write('John\'s number is ' + namesToNumbers.get('John') + '<br>');
+
+// 3. Add a new element
+document.write('<br>3. Add a new element<br>')
+
+// I am trying to add a new key 'Sarah' and associate it with the value 6 with the set function.
+namesToNumbers.set('Sarah', 6);
+// I am trying to print the value of the 'Sarah' key. If it prints 6, then I successfully added the key 'Sarah' with the value 6 into the map.
+document.write('Sarah\'s number is ' + namesToNumbers.get('Sarah') + '<br>');
+
+// 4. Remove an element
+document.write('<br>4. Remove an element<br>')
+
+// I am trying to print the value of the 'Mary' key with the get function. If it prints 2, then it was previously initialized as expected and currently exists in the map.
+document.write('Mary\'s number is ' + namesToNumbers.get('Mary') + '<br>');
+
+// I am trying to delete the 'Mary' key and its value with the delete function. 
+namesToNumbers.delete('Mary');
+
+// I am trying to print the value of the 'Mary' key again. If it prints undefined, then I successfully removed 'Mary' key and its value.
+document.write('Mary\'s number is ' + namesToNumbers.get('Mary') + '<br>');  
+
+// 5. Modify the value of an existing element
+document.write('<br>5. Modify the value of an existing element<br>')
+
+// I am trying to print the value of the 'Jennifer' key with get function. If it prints 4, then it was previously initialized as expected and currently exists in the map.
+document.write('Jennifer\'s number is ' + namesToNumbers.get('Jennifer') + '<br>');
+
+// I am trying to set the value of the 'Jennifer' key to the value of 10 with the set function.
+namesToNumbers.set('Jennifer', 10);
+
+// I am trying to get the updated value of the 'Jennifer' key with the set function. If it prints the updated value which is 10, then I successfully updated the value previously.
+document.write('Jennifer\'s number is ' + namesToNumbers.get('Jennifer') + '<br>');
+
+// 6. Search for the existence of a key
+document.write('<br>6. Search for the existence of a key<br>')
+
+// I found that there is a function called has which searches for the existence of a key. I know that there is no key named 'Linda'. The function works if it prints the correct information.
+if(namesToNumbers.has('Linda'))
+{
+    document.write('\"Linda\" key exists <br>');  
+}
+else
+{
+    document.write('\"Linda\" key does not exist <br>');  
+}
+
+// I know 'John' key exists. I should try for this case too to confirm that the has function works. I will confirm that it works if it prints the correct information.
+if(namesToNumbers.has('John'))
+{
+    document.write('\"John\" key exists <br>');  
+}
+else
+{
+    document.write('\"John\" key does not exist <br>');  
+}
+
+// 7. Search for the existence of a value
+document.write('<br>7. Search for the existence of a value<br>')
+
+// I found that there is no shortcut to search for the existence of a value. I have to check all of the values to see if 1 as a value exists using values function which returns a new Iterator object that contains the values for each element in the map.I know that 1 as a value exists. The function works if it prints the correct information.
+for (let number of namesToNumbers.values()) 
+{
+    if(number === 1)
+    {
+        document.write('1 value exists <br>');
+    }
+}
+
+// I know that 0 does not exist as a value. I should try for this case too to confirm that I know how to search for the existence of a value. I will confirm that it works if it does not print anything.
+for (let number of namesToNumbers.values()) 
+{
+    if(number === 0)
+    {
+        document.write('\"0\" value exists <br>');
+    }
+}
+
+// 8. Loop through an associative array, apply a function, called foo, which simply prints the key-value pair
+document.write('<br>8. Loop through an associative array, apply a function, called foo, which simply prints the key-value pair<br>')
+
+// I found that there is no shortcut to print the elements of a map. I will try to print the elements with a for...of. If it prints then it works.
+function foo(map)
+{
+    for (let [key, value] of map) 
+    {
+        document.write(key + "-" + value + '<br>');
+    }
+    
+    // Alternative
+    //map.forEach(function(value, key) {
+    //	document.write(key + ' - ' + value + '<br>')
+	//})
+}
+
+foo(namesToNumbers);
+
+</script>
